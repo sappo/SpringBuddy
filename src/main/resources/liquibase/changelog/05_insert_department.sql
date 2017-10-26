@@ -1,0 +1,10 @@
+insert into department (id, department_name, location_id) values (1, 'Product Management', 97);
+insert into department (id, department_name, location_id) values (2, 'Engineering', 17);
+insert into department (id, department_name, location_id) values (3, 'Human Resources', 11);
+insert into department (id, department_name, location_id) values (4, 'Engineering', 38);
+insert into department (id, department_name, location_id) values (5, 'Support', 54);
+insert into department (id, department_name, location_id) values (6, 'Services', 97);
+insert into department (id, department_name, location_id) values (7, 'Accounting', 76);
+insert into department (id, department_name, location_id) values (8, 'Support', 60);
+insert into department (id, department_name, location_id) values (9, 'Marketing', 75);
+insert into department (id, department_name, location_id) values (10, 'Training', 82);

@@ -1,0 +1,67 @@
+-- *********************************************************************
+-- Update Database Script
+-- *********************************************************************
+-- Change Log: liquibase-changelog.xml
+-- Ran at: 10/25/17 10:30 PM
+-- Against: LIQUIBASE@jdbc:h2:mem:liquibase
+-- Liquibase version: 3.5.3
+-- *********************************************************************
+
+-- Create Database Lock Table
+CREATE TABLE PUBLIC.DATABASECHANGELOGLOCK (ID INT NOT NULL, LOCKED BOOLEAN NOT NULL, LOCKGRANTED TIMESTAMP, LOCKEDBY VARCHAR(255), CONSTRAINT PK_DATABASECHANGELOGLOCK PRIMARY KEY (ID));
+
+-- Initialize Database Lock Table
+DELETE FROM PUBLIC.DATABASECHANGELOGLOCK;
+
+INSERT INTO PUBLIC.DATABASECHANGELOGLOCK (ID, LOCKED) VALUES (1, FALSE);
+
+-- Lock Database
+UPDATE PUBLIC.DATABASECHANGELOGLOCK SET LOCKED = TRUE, LOCKEDBY = 'ksapper.fritz.box (192.168.178.115)', LOCKGRANTED = '2017-10-25 22:30:47.375' WHERE ID = 1 AND LOCKED = FALSE;
+
+-- Create Database Change Log Table
+CREATE TABLE PUBLIC.DATABASECHANGELOG (ID VARCHAR(255) NOT NULL, AUTHOR VARCHAR(255) NOT NULL, FILENAME VARCHAR(255) NOT NULL, DATEEXECUTED TIMESTAMP NOT NULL, ORDEREXECUTED INT NOT NULL, EXECTYPE VARCHAR(10) NOT NULL, MD5SUM VARCHAR(35), DESCRIPTION VARCHAR(255), COMMENTS VARCHAR(255), TAG VARCHAR(255), LIQUIBASE VARCHAR(20), CONTEXTS VARCHAR(255), LABELS VARCHAR(255), DEPLOYMENT_ID VARCHAR(10));
+
+-- Changeset changelog/01-create-books-and-author-schema.xml::01::hhimanshu
+CREATE TABLE PUBLIC.books (id INT NOT NULL, name VARCHAR(255) NOT NULL, author INT NOT NULL, CONSTRAINT PK_BOOKS PRIMARY KEY (id), UNIQUE (id), UNIQUE (name));
+
+COMMENT ON TABLE PUBLIC.books IS 'A table to contain all books';
+
+CREATE TABLE PUBLIC.authors (id INT NOT NULL, name VARCHAR(100) NOT NULL, CONSTRAINT PK_AUTHORS PRIMARY KEY (id));
+
+COMMENT ON TABLE PUBLIC.authors IS 'A table to contain all the authors';
+
+ALTER TABLE PUBLIC.books ADD CONSTRAINT author_fk FOREIGN KEY (author) REFERENCES PUBLIC.authors (id);
+
+INSERT INTO PUBLIC.DATABASECHANGELOG (ID, AUTHOR, FILENAME, DATEEXECUTED, ORDEREXECUTED, MD5SUM, DESCRIPTION, COMMENTS, EXECTYPE, CONTEXTS, LABELS, LIQUIBASE, DEPLOYMENT_ID) VALUES ('01', 'hhimanshu', 'changelog/01-create-books-and-author-schema.xml', NOW(), 1, '7:e9a2398b494b980f2a9f0e2c9d05d161', 'createTable tableName=books; createTable tableName=authors; addForeignKeyConstraint baseTableName=books, constraintName=author_fk, referencedTableName=authors', '', 'EXECUTED', NULL, NULL, '3.5.3', '8963448129');
+
+-- Changeset changelog/02-insert-data-authors.xml::02::hhimanshu
+-- Inserting Authors
+INSERT INTO PUBLIC.authors (id, name) VALUES (1, 'author_01');
+
+INSERT INTO PUBLIC.authors (id, name) VALUES (2, 'author_02');
+
+INSERT INTO PUBLIC.authors (id, name) VALUES (3, 'author_03');
+
+INSERT INTO PUBLIC.authors (id, name) VALUES (4, 'author_04');
+
+INSERT INTO PUBLIC.authors (id, name) VALUES (5, 'author_05');
+
+INSERT INTO PUBLIC.DATABASECHANGELOG (ID, AUTHOR, FILENAME, DATEEXECUTED, ORDEREXECUTED, MD5SUM, DESCRIPTION, COMMENTS, EXECTYPE, CONTEXTS, LABELS, LIQUIBASE, DEPLOYMENT_ID) VALUES ('02', 'hhimanshu', 'changelog/02-insert-data-authors.xml', NOW(), 2, '7:13aa61350fd47565e088302b5b948e37', 'insert tableName=authors; insert tableName=authors; insert tableName=authors; insert tableName=authors; insert tableName=authors', 'Inserting Authors', 'EXECUTED', NULL, NULL, '3.5.3', '8963448129');
+
+-- Changeset changelog/02-insert-data-books.xml::03::hhimanshu
+-- Inserting Books
+INSERT INTO PUBLIC.books (id, name, author) VALUES (1, 'book_01_a_01', 01);
+
+INSERT INTO PUBLIC.books (id, name, author) VALUES (2, 'book_02_a_02', 02);
+
+INSERT INTO PUBLIC.books (id, name, author) VALUES (3, 'book_01_a_03', 03);
+
+INSERT INTO PUBLIC.books (id, name, author) VALUES (4, 'book_01_a_04', 04);
+
+INSERT INTO PUBLIC.books (id, name, author) VALUES (5, 'book_01_a_05', 05);
+
+INSERT INTO PUBLIC.DATABASECHANGELOG (ID, AUTHOR, FILENAME, DATEEXECUTED, ORDEREXECUTED, MD5SUM, DESCRIPTION, COMMENTS, EXECTYPE, CONTEXTS, LABELS, LIQUIBASE, DEPLOYMENT_ID) VALUES ('03', 'hhimanshu', 'changelog/02-insert-data-books.xml', NOW(), 3, '7:c958713ab494e8dd466bc9bdb960d3e9', 'insert tableName=books; insert tableName=books; insert tableName=books; insert tableName=books; insert tableName=books', 'Inserting Books', 'EXECUTED', NULL, NULL, '3.5.3', '8963448129');
+
+-- Release Database Lock
+UPDATE PUBLIC.DATABASECHANGELOGLOCK SET LOCKED = FALSE, LOCKEDBY = NULL, LOCKGRANTED = NULL WHERE ID = 1;
+
