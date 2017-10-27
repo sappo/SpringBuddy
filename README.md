@@ -4,6 +4,10 @@ Willkommen zum Detim ByteBuddy Workshop.
 
 Dieses Projekt stellt dir eine Grundlage für die folgenden Aufgaben.
 
+Die ByteBuddy Beispiele aus dem Vortrag findest du hier:
+
+http://github.com/sappo/ByteBuddyExamples
+
 Viel Vergnügen!!!
 
 ## Aufgaben
