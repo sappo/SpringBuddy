@@ -25,28 +25,34 @@ public class SpringBuddyApplication {
             .getLocation()
             .getPath();
 
+    public static void generateByteCode() {
+        try {
+            new ByteBuddy()
+                    .subclass(Object.class)
+                    .name("de.detim.codegen.awespring.GenController")
+                    .annotateType(AnnotationDescription.Builder
+                                          .ofType(RestController.class)
+                                          .build())
+                    .defineMethod(
+                            "home",
+                            String.class,
+                            Modifier.PUBLIC
+                    )
+                    .intercept(FixedValue.value("Hello SpringBuddies!"))
+                    .annotateMethod(
+                            AnnotationDescription.Builder
+                                    .ofType(RequestMapping.class)
+                                    .defineArray("value", "/demo", "/omed")
+                                    .build())
+                    .make()
+                    .saveIn(new File(CLASSPATH));
+        } catch (Exception ex) {
+            System.out.println("Stupid dev!");
+        }
+    }
 
     public static void main(String[] args) throws IOException {
-        new ByteBuddy()
-                .subclass(Object.class)
-                .name("de.detim.codegen.awespring.GenController")
-                .annotateType(AnnotationDescription.Builder
-                                      .ofType(RestController.class)
-                                      .build())
-                .defineMethod(
-                        "home",
-                        String.class,
-                        Modifier.PUBLIC
-                )
-                .intercept(FixedValue.value("Hello GenWorld!"))
-                .annotateMethod(
-                        AnnotationDescription.Builder
-                                .ofType(RequestMapping.class)
-                                .defineArray("value", "/a", "/b")
-                                .build())
-                .make()
-                .saveIn(new File(CLASSPATH));
-
+        generateByteCode();
         SpringApplication.run(SpringBuddyApplication.class, args);
     }
 }

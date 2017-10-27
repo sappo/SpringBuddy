@@ -2,14 +2,15 @@ package de.detim.codegen.awespring;
 
 import io.restassured.RestAssured;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static io.restassured.RestAssured.*;
-import static org.hamcrest.Matchers.*;
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.is;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
@@ -17,6 +18,11 @@ public class WorkshopAufgabe1Tests {
 
     @Value("${local.server.port}")
     int port;
+
+    @BeforeClass
+    public static void setup() {
+        SpringBuddyApplication.generateByteCode();
+    }
 
     @Before
     public void setupTest() {
