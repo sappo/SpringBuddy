@@ -44,14 +44,14 @@ public class WorkshopAufgabe1Tests {
         // @formatter:off
         given()
         .when()
-            .get("/countrys")
+            .get("/countries")
         .then()
-            .body("_embedded.countrys[0].countryName", is( "Venezuela"))
-            .body("_embedded.countrys[1].countryName", is( "Brazil"))
-            .body("_embedded.countrys[2].countryName", is( "Poland"))
-            .body("_embedded.countrys[3].countryName", is( "United States"))
-            .body("_embedded.countrys[4].countryName", is( "Vietnam"))
-            .body("_embedded.countrys[5].countryName", is( "France"));
+            .body("_embedded.countries[0].countryName", is( "Venezuela"))
+            .body("_embedded.countries[1].countryName", is( "Brazil"))
+            .body("_embedded.countries[2].countryName", is( "Poland"))
+            .body("_embedded.countries[3].countryName", is( "United States"))
+            .body("_embedded.countries[4].countryName", is( "Vietnam"))
+            .body("_embedded.countries[5].countryName", is( "France"));
         // @formatter:on
     }
 

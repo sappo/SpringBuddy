@@ -6,11 +6,11 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /**
- * A Region.
+ * A Country.
  */
 @Entity
-@Table(name = "region")
-public class Region implements Serializable {
+@Table(name = "country")
+public class Country implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -18,8 +18,12 @@ public class Region implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "region_name")
-    private String regionName;
+    @Column(name = "country_name")
+    private String countryName;
+
+    @ManyToOne
+    @JoinColumn
+    private Region region;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -30,17 +34,30 @@ public class Region implements Serializable {
         this.id = id;
     }
 
-    public String getRegionName() {
-        return regionName;
+    public String getCountryName() {
+        return countryName;
     }
 
-    public Region regionName(String regionName) {
-        this.regionName = regionName;
+    public Country countryName(String countryName) {
+        this.countryName = countryName;
         return this;
     }
 
-    public void setRegionName(String regionName) {
-        this.regionName = regionName;
+    public void setCountryName(String countryName) {
+        this.countryName = countryName;
+    }
+
+    public Region getRegion() {
+        return region;
+    }
+
+    public Country region(Region region) {
+        this.region = region;
+        return this;
+    }
+
+    public void setRegion(Region region) {
+        this.region = region;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -52,11 +69,11 @@ public class Region implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Region region = (Region) o;
-        if (region.getId() == null || getId() == null) {
+        Country country = (Country) o;
+        if (country.getId() == null || getId() == null) {
             return false;
         }
-        return Objects.equals(getId(), region.getId());
+        return Objects.equals(getId(), country.getId());
     }
 
     @Override
@@ -66,9 +83,9 @@ public class Region implements Serializable {
 
     @Override
     public String toString() {
-        return "Region{" +
+        return "Country{" +
             "id=" + getId() +
-            ", regionName='" + getRegionName() + "'" +
+            ", countryName='" + getCountryName() + "'" +
             "}";
     }
 }

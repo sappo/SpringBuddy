@@ -13,21 +13,21 @@
     <include file="liquibase/changelog/20171025200238_added_entity_Employee.xml" relativeToChangelogFile="false"/>
     <include file="liquibase/changelog/20171025200239_added_entity_Job.xml" relativeToChangelogFile="false"/>
     <include file="liquibase/changelog/20171025200240_added_entity_JobHistory.xml" relativeToChangelogFile="false"/>
-    <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+
     <include file="liquibase/changelog/20171025200234_added_entity_constraints_Country.xml" relativeToChangelogFile="false"/>
     <include file="liquibase/changelog/20171025200235_added_entity_constraints_Location.xml" relativeToChangelogFile="false"/>
     <include file="liquibase/changelog/20171025200236_added_entity_constraints_Department.xml" relativeToChangelogFile="false"/>
     <include file="liquibase/changelog/20171025200238_added_entity_constraints_Employee.xml" relativeToChangelogFile="false"/>
     <include file="liquibase/changelog/20171025200239_added_entity_constraints_Job.xml" relativeToChangelogFile="false"/>
     <include file="liquibase/changelog/20171025200240_added_entity_constraints_JobHistory.xml" relativeToChangelogFile="false"/>
-    <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
-    <include file="liquibase/changelog/01_insert_region.sql" />
-    <include file="liquibase/changelog/02_insert_country.sql" />
-    <include file="liquibase/changelog/03_insert_location.sql" />
-    <include file="liquibase/changelog/04_insert_task.sql" />
-    <include file="liquibase/changelog/05_insert_department.sql" />
-    <include file="liquibase/changelog/06_insert_employee.sql" />
-    <include file="liquibase/changelog/07_insert_job.sql" />
-    <include file="liquibase/changelog/08_insert_job_task.sql" />
-    <include file="liquibase/changelog/09_insert_job_history.sql" />
+
+    <include file="liquibase/changelog/01_insert_region.sql" relativeToChangelogFile="false"/>
+    <include file="liquibase/changelog/02_insert_country.sql" relativeToChangelogFile="false"/>
+    <include file="liquibase/changelog/03_insert_location.sql" relativeToChangelogFile="false"/>
+    <include file="liquibase/changelog/04_insert_task.sql" relativeToChangelogFile="false"/>
+    <include file="liquibase/changelog/05_insert_department.sql" relativeToChangelogFile="false"/>
+    <include file="liquibase/changelog/06_insert_employee.sql" relativeToChangelogFile="false"/>
+    <include file="liquibase/changelog/07_insert_job.sql" relativeToChangelogFile="false"/>
+    <include file="liquibase/changelog/08_insert_job_task.sql" relativeToChangelogFile="false"/>
+    <include file="liquibase/changelog/09_insert_job_history.sql" relativeToChangelogFile="false"/>
 </databaseChangeLog>

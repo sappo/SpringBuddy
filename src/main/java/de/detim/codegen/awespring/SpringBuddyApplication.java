@@ -15,7 +15,7 @@ import java.lang.reflect.Modifier;
 
 @SpringBootApplication
 @ComponentScan(basePackages = {"de.detim.codegen.**"})
-public class AwespringApplication {
+public class SpringBuddyApplication {
 
     private static final String CLASSPATH = new Object() {
     }.getClass()
@@ -47,6 +47,6 @@ public class AwespringApplication {
                 .make()
                 .saveIn(new File(CLASSPATH));
 
-        SpringApplication.run(AwespringApplication.class, args);
+        SpringApplication.run(SpringBuddyApplication.class, args);
     }
 }
