@@ -26,9 +26,12 @@ public class Department implements Serializable {
     @Column(name = "department_name", nullable = false)
     private String departmentName;
 
+    /*
+    Does not work yet!
     @OneToOne
     @JoinColumn(unique = true)
     private Location location;
+    */
 
     /**
      * A relationship
@@ -59,6 +62,7 @@ public class Department implements Serializable {
         this.departmentName = departmentName;
     }
 
+    /*
     public Location getLocation() {
         return location;
     }
@@ -71,6 +75,7 @@ public class Department implements Serializable {
     public void setLocation(Location location) {
         this.location = location;
     }
+    */
 
     public Set<Employee> getEmployees() {
         return employees;
